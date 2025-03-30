@@ -1291,3 +1291,64 @@ section,
 .starter-section {
   /* Add your styles here */
 }
+.videos .video-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.videos .video-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.videos .video-thumbnail {
+  overflow: hidden;
+}
+
+.videos .video-thumbnail img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.videos .video-card:hover .video-thumbnail img {
+  transform: scale(1.05);
+}
+
+.videos .play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 3rem;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.videos .play-btn:hover {
+  opacity: 1;
+  font-size: 3.2rem;
+}
+
+.videos .video-info {
+  background: #fff;
+}
+
+.videos .video-info h4 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: var(--color-primary);
+}
+
+.videos .video-info p {
+  color: #777;
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
