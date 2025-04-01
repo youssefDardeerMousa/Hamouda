@@ -1352,3 +1352,43 @@ section,
   font-size: 0.9rem;
   margin-bottom: 0;
 }
+
+/*--------------------------------------------------------------
+# Supervision Section
+--------------------------------------------------------------*/
+#supervision {
+  padding: 60px 0;
+}
+
+#supervision .card {
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#supervision .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+#supervision .card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+}
+
+#supervision .card-text {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+#supervision .section-title h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+#supervision .section-title p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 30px;
+}
