@@ -1381,6 +1381,16 @@ section,
   color: #555;
 }
 
+#supervision .btn-primary {
+  background-color: var(--accent-color);
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+#supervision .btn-primary:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+}
+
 #supervision .section-title h2 {
   font-size: 2.5rem;
   font-weight: bold;
