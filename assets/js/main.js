@@ -226,4 +226,62 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
+  /**
+   * Document ready function
+   */
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize skill animations when section is in viewport
+    const skillsSection = document.getElementById('skills');
+    if (skillsSection) {
+      new Waypoint({
+        element: skillsSection,
+        offset: '80%',
+        handler: function() {
+          const progressBars = document.querySelectorAll('.progress-bar');
+          progressBars.forEach((bar, index) => {
+            setTimeout(() => {
+              const value = bar.getAttribute('aria-valuenow') || '0';
+              bar.style.width = value + '%';
+            }, index * 100);
+          });
+        }
+      });
+    }
+    
+    // Fix for video buttons
+    setupVideoButtons();
+  });
+
+  /**
+   * Set up video buttons to open the modal with the correct video
+   */
+  function setupVideoButtons() {
+    const videoButtons = document.querySelectorAll('.video-btn');
+    const videoModal = document.getElementById('videoModal');
+    const videoPlayer = document.getElementById('videoPlayer');
+    
+    if (!videoModal || !videoPlayer) return;
+    
+    // Create Bootstrap modal instance
+    const modalInstance = new bootstrap.Modal(videoModal);
+    
+    videoButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const videoUrl = this.getAttribute('data-video');
+        if (videoUrl) {
+          // Set the video source
+          videoPlayer.src = videoUrl;
+          
+          // Show the modal
+          modalInstance.show();
+        }
+      });
+    });
+    
+    // When the modal is hidden, stop the video
+    videoModal.addEventListener('hidden.bs.modal', function() {
+      videoPlayer.src = '';
+    });
+  }
+
 })();

@@ -1,0 +1,306 @@
+/* Impressive Skills Table Display with Grid Layout */
+
+/* Main skills container */
+.skills-content {
+  position: relative;
+  padding: 30px;
+  border-radius: 15px;
+  background: #ffffff;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    0 1px 3px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* Create grid layout for skills table */
+.skills-table {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  margin-top: 20px;
+}
+
+/* Individual skill item styling */
+.skill-item {
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-color: rgba(13, 110, 253, 0.2);
+}
+
+/* Skill header with name and percentage */
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* Skill name styling */
+.skill-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #212529;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Skill icon */
+.skill-name::before {
+  font-family: "bootstrap-icons";
+  content: "\F2B8";
+  margin-right: 10px;
+  color: #0d6efd;
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.skill-item:hover .skill-name::before {
+  transform: rotate(10deg);
+}
+
+/* Custom icons for different skill types */
+.skill-item[data-skill="ICDL"] .skill-name::before { content: "\F559"; }
+.skill-item[data-skill="MICROSOFT OFFICE"] .skill-name::before { content: "\F3D1"; }
+.skill-item[data-skill="COMPUTER MAINTENANCE"] .skill-name::before { content: "\F17C"; }
+.skill-item[data-skill="MASTERCAM-PRO-ENGINEERING"] .skill-name::before { content: "\F5FC"; }
+.skill-item[data-skill="PHOTOSHOP"] .skill-name::before { content: "\F39D"; }
+.skill-item[data-skill="CATTIA V5 R19"] .skill-name::before { content: "\F15B"; }
+.skill-item[data-skill="SOLID WORKS"] .skill-name::before { content: "\F175"; }
+.skill-item[data-skill="DYNAFORM"] .skill-name::before { content: "\F2E8"; }
+.skill-item[data-skill="LINGO"] .skill-name::before { content: "\F10A"; }
+.skill-item[data-skill="ENDNOTE X7"] .skill-name::before { content: "\F79D"; }
+
+/* Percentage badge */
+.skill-percentage {
+  background: #0d6efd;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 30px;
+  box-shadow: 0 3px 8px rgba(13, 110, 253, 0.3);
+  transition: all 0.3s ease;
+  min-width: 60px;
+  text-align: center;
+}
+
+.skill-item:hover .skill-percentage {
+  transform: scale(1.05);
+  background: #0b5ed7;
+  box-shadow: 0 5px 15px rgba(13, 110, 253, 0.4);
+}
+
+/* Progress bar container */
+.skill-progress-container {
+  height: 10px;
+  background: rgba(233, 236, 239, 0.6);
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* Progress bar fill */
+.skill-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #0d6efd, #6ea8fe);
+  border-radius: 50px;
+  width: 0%;
+  transition: width 1.2s cubic-bezier(0.1, 0.5, 0.2, 1);
+  position: relative;
+}
+
+/* Animated pattern on progress bar */
+.skill-progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.2) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.2) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 20px 20px;
+  animation: move-stripes 1.5s linear infinite;
+}
+
+@keyframes move-stripes {
+  0% { background-position: 0 0; }
+  100% { background-position: 20px 0; }
+}
+
+/* Shine effect on progress bars */
+.skill-progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 40%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: skewX(-25deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% { left: -50%; }
+  40%, 100% { left: 125%; }
+}
+
+/* Skill level indicator */
+.skill-level {
+  position: absolute;
+  right: 15px;
+  bottom: -20px;
+  background: #0d6efd;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.skill-item:hover .skill-level {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Decorative corner accent */
+.skill-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background: #0d6efd;
+  opacity: 0.1;
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  transition: all 0.3s ease;
+}
+
+.skill-item:hover::after {
+  width: 25px;
+  height: 25px;
+  background: #0d6efd;
+  opacity: 0.3;
+}
+
+/* Color variations based on skill percentage */
+.skill-item[data-percent="100"] .skill-progress-bar {
+  background: linear-gradient(90deg, #198754, #75b798);
+}
+
+.skill-item[data-percent="100"] .skill-percentage {
+  background: #198754;
+}
+
+.skill-item[data-percent="98"] .skill-progress-bar,
+.skill-item[data-percent="97"] .skill-progress-bar {
+  background: linear-gradient(90deg, #0d6efd, #6ea8fe);
+}
+
+.skill-item[data-percent="96"] .skill-progress-bar,
+.skill-item[data-percent="95"] .skill-progress-bar,
+.skill-item[data-percent="94"] .skill-progress-bar {
+  background: linear-gradient(90deg, #6f42c1, #a98eda);
+}
+
+.skill-item[data-percent="96"] .skill-percentage,
+.skill-item[data-percent="95"] .skill-percentage,
+.skill-item[data-percent="94"] .skill-percentage {
+  background: #6f42c1;
+}
+
+.skill-item[data-percent="93"] .skill-progress-bar,
+.skill-item[data-percent="92"] .skill-progress-bar,
+.skill-item[data-percent="91"] .skill-progress-bar,
+.skill-item[data-percent="90"] .skill-progress-bar {
+  background: linear-gradient(90deg, #fd7e14, #ffcd39);
+}
+
+.skill-item[data-percent="93"] .skill-percentage,
+.skill-item[data-percent="92"] .skill-percentage,
+.skill-item[data-percent="91"] .skill-percentage,
+.skill-item[data-percent="90"] .skill-percentage {
+  background: #fd7e14;
+}
+
+/* Category heading styling */
+.skills-category {
+  margin-bottom: 25px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.skills-category::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50px;
+  height: 3px;
+  background: #0d6efd;
+}
+
+.skills-category h3 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #212529;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.skills-category h3 i {
+  margin-right: 10px;
+  color: #0d6efd;
+  font-size: 24px;
+}
+
+/* Responsiveness */
+@media (max-width: 992px) {
+  .skills-table {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .skill-name {
+    font-size: 14px;
+  }
+  
+  .skill-percentage {
+    font-size: 11px;
+    padding: 3px 10px;
+  }
+  
+  .skill-item {
+    padding: 15px;
+  }
+}

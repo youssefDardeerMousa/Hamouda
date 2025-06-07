@@ -1,0 +1,804 @@
+/* Windows Style Layout CSS */
+.window-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 30px 0;
+}
+
+.window-section {
+  width: 300px;
+  height: 220px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.4s ease;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.window-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.window-header {
+  background-color: #3a77b3;
+  color: white;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.window-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.window-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.window-control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.window-close {
+  background-color: #ff5f57;
+}
+
+.window-minimize {
+  background-color: #febc2e;
+}
+
+.window-maximize {
+  background-color: #28c941;
+}
+
+.window-preview {
+  padding: 15px;
+  height: 160px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.window-preview i {
+  font-size: 40px;
+  margin-bottom: 15px;
+  color: #3a77b3;
+}
+
+.window-preview h4 {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.window-preview p {
+  font-size: 14px;
+  opacity: 0.8;
+  margin: 0;
+}
+
+.window-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.window-expanded {
+  background-color: white;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 1200px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: windowOpen 0.3s ease-out forwards;
+}
+
+@keyframes windowOpen {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.window-expanded-header {
+  background-color: #3a77b3;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.window-expanded-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.window-expanded-header h3 i {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.window-expanded-content {
+  padding: 25px;
+  background-color: #f9f9f9;
+  overflow-y: auto;
+  max-height: calc(90vh - 60px);
+}
+
+/* Enhanced Skills Section Styling */
+.window-expanded-content .skills-content {
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.window-expanded-content .skill-item {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.window-expanded-content .skill-name {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #343a40;
+}
+
+.window-expanded-content .skill-percentage {
+  float: right;
+  font-weight: 600;
+  color: #3a77b3;
+}
+
+.window-expanded-content .skill-bar {
+  height: 12px;
+  background: #e9ecef;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.window-expanded-content .skill-progress {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: width 1.5s ease;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #3a77b3 0%, #5a9de0 100%);
+}
+
+.window-expanded-content .skill-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255,255,255,0.15) 25%, 
+                              transparent 25%, transparent 50%, 
+                              rgba(255,255,255,0.15) 50%, 
+                              rgba(255,255,255,0.15) 75%, 
+                              transparent 75%, transparent);
+  background-size: 20px 20px;
+  animation: progress-animation 1s linear infinite;
+}
+
+@keyframes progress-animation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 20px 0;
+  }
+}
+
+.window-expanded-content .skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.window-expanded-content .skill-card {
+  background: white;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-top: 4px solid #3a77b3;
+}
+
+.window-expanded-content .skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.window-expanded-content .skill-icon {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #3a77b3;
+  display: inline-block;
+}
+
+.window-expanded-content .skill-title {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #343a40;
+}
+
+.window-expanded-content .skill-description {
+  color: #6c757d;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Skill category styling */
+.window-expanded-content .skill-category {
+  margin-bottom: 30px;
+}
+
+.window-expanded-content .skill-category-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #343a40;
+  position: relative;
+  padding-left: 15px;
+  border-left: 4px solid #3a77b3;
+}
+
+.window-close-btn {
+  background-color: #ff5f57;
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.window-close-btn:hover {
+  background-color: #ff3b36;
+  transform: scale(1.1);
+}
+
+.window-controls-group {
+  display: flex;
+  gap: 8px;
+}
+
+.window-min-btn {
+  
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.window-max-btn {
+  background-color: #28c941;
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.window-min-btn:hover, .window-max-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Additional styles for windows interface */
+#section-windows {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4eaf5 100%);
+  border-radius: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.navmenu a.active::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 4px;
+  height: 60%;
+  background-color: #3a77b3;
+  top: 20%;
+}
+
+/* Animation for hover effect */
+.window-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: -1;
+  transform: scale(0.8);
+  opacity: 0;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+}
+
+.window-section:hover::before {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Improved section layout */
+.window-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .window-section {
+    width: calc(50% - 15px);
+    margin: 0;
+  }
+  
+  .window-expanded-content {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .window-section {
+    width: 100%;
+  }
+  
+  #section-windows {
+    padding: 20px 10px;
+  }
+}
+
+/* Theme colors for different sections */
+.window-section[data-section="about"] .window-header {
+  background-color: #3a77b3;
+}
+
+.window-section[data-section="stats"] .window-header {
+  background-color: #28a745;
+}
+
+.window-section[data-section="skills"] .window-header {
+  background-color: #6f42c1;
+}
+
+.window-section[data-section="resume"] .window-header {
+  background-color: #fd7e14;
+}
+
+.window-section[data-section="portfolio"] .window-header {
+  background-color: #20c997;
+}
+
+.window-section[data-section="videos"] .window-header {
+  background-color: #e83e8c;
+}
+
+.window-section[data-section="supervision"] .window-header {
+  background-color: #6c757d;
+}
+
+.window-section[data-section="course-lectures"] .window-header {
+  background-color: #dc3545;
+}
+
+/* Add the same colors to expanded windows */
+#overlay-about .window-expanded-header {
+  background-color: #3a77b3;
+}
+
+#overlay-stats .window-expanded-header {
+  background-color: #28a745;
+}
+
+#overlay-skills .window-expanded-header {
+  background-color: #6f42c1;
+}
+
+#overlay-resume .window-expanded-header {
+  background-color: #fd7e14;
+}
+
+#overlay-portfolio .window-expanded-header {
+  background-color: #20c997;
+}
+
+#overlay-videos .window-expanded-header {
+  background-color: #e83e8c;
+}
+
+#overlay-supervision .window-expanded-header {
+  background-color: #6c757d;
+}
+
+#overlay-course-lectures .window-expanded-header {
+  background-color: #dc3545;
+}
+
+/* Loading animation */
+.window-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  width: 100%;
+}
+
+.window-loading::after {
+  content: '';
+  width: 40px;
+  height: 40px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3a77b3;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Improve focus outline for accessibility */
+.window-section:focus {
+  outline: 2px solid #3a77b3;
+  outline-offset: 2px;
+}
+
+/* Improve section indicators */
+.window-section::after {
+  content: 'Click to view';
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 10px;
+  background-color: rgba(0,0,0,0.1);
+  padding: 2px 8px;
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.window-section:hover::after {
+  opacity: 1;
+}
+
+/* Improve window transition */
+.window-expanded {
+  transition: all 0.3s ease;
+}
+
+.window-expanded.minimized {
+  height: auto;
+  width: 300px;
+}
+
+/* Enhanced navigation active state */
+.navmenu a.active {
+  background-color: rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+/* Better scrolling in window content */
+.window-expanded-content {
+  scrollbar-width: thin;
+  scrollbar-color: #3a77b3 #f0f0f0;
+}
+
+.window-expanded-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.window-expanded-content::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 4px;
+}
+
+.window-expanded-content::-webkit-scrollbar-thumb {
+  background-color: #3a77b3;
+  border-radius: 4px;
+  border: 2px solid #f0f0f0;
+}
+
+/* Enhanced Portfolio Section */
+.enhanced-portfolio {
+  padding: 20px 0;
+}
+
+.portfolio-filters-container {
+  margin-bottom: 30px;
+}
+
+.portfolio-filters {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+.portfolio-filters li {
+  cursor: pointer;
+  padding: 8px 15px;
+  border-radius: 30px;
+  transition: all 0.3s;
+  background-color: #f8f9fa;
+}
+
+.portfolio-filters li.filter-active {
+  background-color: #3a77b3;
+  color: white;
+}
+
+.portfolio-filters li:hover:not(.filter-active) {
+  background-color: #e9ecef;
+}
+
+.portfolio-grid {
+  margin-top: 20px;
+}
+
+.enhanced-portfolio-item {
+  margin-bottom: 30px;
+}
+
+.portfolio-card {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.portfolio-img {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.portfolio-img img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.portfolio-card:hover .portfolio-img img {
+  transform: scale(1.1);
+}
+
+.portfolio-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(58, 119, 179, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.portfolio-img:hover .portfolio-hover {
+  opacity: 1;
+}
+
+.portfolio-hover-content {
+  color: white;
+  text-align: center;
+}
+
+.portfolio-caption {
+  padding: 15px;
+  text-align: center;
+}
+
+.portfolio-caption h4 {
+  margin-bottom: 5px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.portfolio-caption p {
+  color: #6c757d;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+/* Portfolio Lightbox */
+.portfolio-lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.lightbox-container {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.lightbox-content {
+  position: relative;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 5px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-caption {
+  position: absolute;
+  bottom: -60px;
+  left: 0;
+  width: 100%;
+  padding: 15px;
+  color: white;
+  text-align: center;
+}
+
+.lightbox-caption h3 {
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.lightbox-caption p {
+  margin: 0;
+  opacity: 0.8;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.lightbox-close:hover {
+  transform: scale(1.2);
+}
+
+/* Video Player Enhancements */
+.enhanced-video-modal .modal-content {
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  border: none;
+}
+
+.enhanced-video-modal .modal-header {
+  border-bottom: 1px solid #333;
+  padding: 15px 20px;
+  background-color: #1a1a1a;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.enhanced-video-modal .modal-title {
+  color: white;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.enhanced-video-modal .modal-title i {
+  color: #ff0000;
+}
+
+.enhanced-video-modal .btn-close {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  opacity: 1;
+}
+
+.enhanced-video-modal .modal-body {
+  padding: 0;
+}
+
+.enhanced-video-modal .ratio {
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  overflow: hidden;
+}
+
+.enhanced-video-modal .video-info {
+  padding: 15px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.enhanced-video-modal:hover .video-info {
+  transform: translateY(0);
+}
